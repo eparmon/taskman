@@ -1,8 +1,8 @@
-package by.eparmon.taskman.persistence.service.impl;
+package by.eparmon.taskman.service.impl;
 
 import by.eparmon.taskman.persistence.model.Project;
 import by.eparmon.taskman.persistence.repository.ProjectRepository;
-import by.eparmon.taskman.persistence.service.ProjectService;
+import by.eparmon.taskman.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
