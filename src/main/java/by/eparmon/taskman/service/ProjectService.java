@@ -1,4 +1,4 @@
-package by.eparmon.taskman.persistence.service;
+package by.eparmon.taskman.service;
 
 import by.eparmon.taskman.persistence.model.Project;
 
