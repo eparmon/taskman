@@ -2,6 +2,7 @@ package by.eparmon.taskman.persistence.repository.impl;
 
 import by.eparmon.taskman.persistence.model.Project;
 import by.eparmon.taskman.persistence.repository.ProjectRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ProjectRepositoryImpl implements ProjectRepository {
+@Profile("dev")
+public class ProjectRepositoryInMemoryImpl implements ProjectRepository {
 
     private List<Project> projects = new ArrayList<>();
 
@@ -28,3 +30,4 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         return project;
     }
 }
+
