@@ -18,6 +18,15 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<developers>
+		<developer>
+			<email>eparmon@mail.com</email>
+			<name>Jauhien Parmon</name>
+			<url>https://github.com/eparmon</url>
+			<id>eparmon</id>
+		</developer>
+	</developers>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
