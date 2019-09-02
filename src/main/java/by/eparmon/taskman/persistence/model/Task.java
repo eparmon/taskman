@@ -2,9 +2,10 @@ package by.eparmon.taskman.persistence.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Getter
@@ -13,16 +14,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class Project {
+public class Task {
 
     @Id
     @GeneratedValue
     private Long id;
     private String name;
+    private String description;
     private LocalDate createdAt;
-
-    @OneToMany
-    @JoinColumn(name = "project_id")
-    @EqualsAndHashCode.Exclude
-    private List<Task> tasks;
+    private LocalDate dueDate;
+    private TaskStatus status;
 }

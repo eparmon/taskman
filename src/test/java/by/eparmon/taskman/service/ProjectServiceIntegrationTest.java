@@ -17,6 +17,9 @@ public class ProjectServiceIntegrationTest {
 
     @Test
     public void save() {
-        projectService.save(new Project(1L, "Lorem ipsum", LocalDate.now()));
+        projectService.save(Project.builder()
+                .name("Lorem ipsum")
+                .createdAt(LocalDate.now())
+                .build());
     }
 }
