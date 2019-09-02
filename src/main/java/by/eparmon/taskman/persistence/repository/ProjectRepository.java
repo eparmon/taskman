@@ -1,12 +1,9 @@
 package by.eparmon.taskman.persistence.repository;
 
 import by.eparmon.taskman.persistence.model.Project;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.Optional;
 
-public interface ProjectRepository {
+public interface ProjectRepository extends CrudRepository<Project, Long> {
 
-    Optional<Project> findById(Long id);
-
-    Project save(Project project);
 }

@@ -4,11 +4,11 @@ import by.eparmon.taskman.config.TestConfig;
 import by.eparmon.taskman.persistence.model.Project;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import java.time.LocalDate;
+
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-@ActiveProfiles("dev")
 @SpringJUnitConfig(classes = TestConfig.class)
 public class ProjectServiceIntegrationTest {
 
@@ -17,6 +17,6 @@ public class ProjectServiceIntegrationTest {
 
     @Test
     public void save() {
-        projectService.save(new Project());
+        projectService.save(new Project(1L, "Lorem ipsum", LocalDate.now()));
     }
 }
