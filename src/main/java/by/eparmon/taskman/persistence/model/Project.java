@@ -1,16 +1,15 @@
 package by.eparmon.taskman.persistence.model;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
-@Builder(toBuilder = true)
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class Project {
 
     private Long id;
