@@ -1,6 +1,5 @@
 package by.eparmon.taskman.web.dto;
 
-import by.eparmon.taskman.persistence.model.Task;
 import lombok.*;
 
 import java.util.List;
@@ -15,5 +14,5 @@ public class ProjectDto {
 
     private Long id;
     private String name;
-    private List<Task> tasks;
+    private List<TaskDto> tasks;
 }
