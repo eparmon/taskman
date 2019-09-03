@@ -5,13 +5,20 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 public class ProjectRepositoryIntegrationTest {
@@ -71,7 +78,29 @@ public class ProjectRepositoryIntegrationTest {
                 .build());
         List<Project> newProjects = projectRepository.findByCreatedAtBetween(LocalDate.now().minusDays(1),
                 LocalDate.now().plusDays(1));
-        assertThat(newProjects.size(), equalTo(2));
+        assertThat(newProjects, hasSize(2));
         assertThat(newProjects, hasItems(newProject1, newProject2));
+    }
+
+    @Test
+    public void findAllPaginated() {
+        Page<Project> projects = projectRepository.findAll(PageRequest.of(0, 2));
+        assertThat(projects.getContent(), hasSize(2));
+    }
+
+    @Test
+    public void findAllSorted() {
+        List<Project> retrievedProjects = new ArrayList<>();
+        projectRepository.findAll(Sort.by(Sort.Order.asc("name")))
+                .forEach(retrievedProjects::add);
+        List<Project> sortedProjects = new ArrayList<>(retrievedProjects);
+        sortedProjects.sort(Comparator.comparing(Project::getName));
+        assertEquals(sortedProjects, retrievedProjects);
+    }
+
+    @Test
+    public void findAllPaginatedAndSorted() {
+        Page<Project> retrievedProjects = projectRepository.findAll(PageRequest.of(0, 2, Sort.by(Sort.Order.asc("name"))));
+        assertThat(retrievedProjects.getContent(), hasSize(2));
     }
 }
