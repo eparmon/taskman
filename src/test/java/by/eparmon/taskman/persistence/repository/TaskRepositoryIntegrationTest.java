@@ -8,9 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 
 @SpringBootTest
 public class TaskRepositoryIntegrationTest {
@@ -36,7 +36,7 @@ public class TaskRepositoryIntegrationTest {
                 .dueDate(LocalDate.now().plusDays(1))
                 .build());
         List<Task> retrievedTasks = taskRepository.findByNameLike("ask");
-        assertThat(retrievedTasks.size(), equalTo(2));
+        assertThat(retrievedTasks, hasSize(2));
         assertThat(retrievedTasks, hasItems(task1, task2));
     }
 }
