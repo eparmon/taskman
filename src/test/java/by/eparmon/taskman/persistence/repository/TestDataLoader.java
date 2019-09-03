@@ -18,8 +18,8 @@ public class TestDataLoader implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         projectRepository.save(Project.builder()
-                .name("Project 1")
-                .createdAt(LocalDate.now())
+                .name("Old Project")
+                .createdAt(LocalDate.now().minusYears(1))
                 .build());
         projectRepository.save(Project.builder()
                 .name("Project 3")

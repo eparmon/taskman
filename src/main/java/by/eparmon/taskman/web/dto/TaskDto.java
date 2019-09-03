@@ -4,10 +4,8 @@ import by.eparmon.taskman.persistence.model.TaskStatus;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
 import java.time.LocalDate;
 
-@Entity
 @Getter
 @Setter
 @Builder
