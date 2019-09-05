@@ -2,6 +2,8 @@ package by.eparmon.taskman.web.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,5 +16,6 @@ public class ProjectDto {
 
     private Long id;
     private String name;
-    private List<TaskDto> tasks;
+    private LocalDate createdAt;
+    private List<TaskDto> tasks = new ArrayList<>();
 }

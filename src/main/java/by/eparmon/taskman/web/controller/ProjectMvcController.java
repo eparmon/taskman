@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequestMapping("/projects")
 @Profile("mvc")
 @RequiredArgsConstructor
-public class ProjectMVCController {
+public class ProjectMvcController {
 
     private final ProjectService projectService;
 
@@ -28,4 +29,17 @@ public class ProjectMVCController {
         model.addAttribute("projects", projects);
         return "projects";
     }
+
+    @GetMapping("/new")
+    public String newProject(Model model) {
+        model.addAttribute("project", new ProjectDto());
+        return "new-project";
+    }
+
+    @PostMapping
+    public String addProject(ProjectDto projectDto) {
+        projectService.save(ProjectConverter.convertToEntity(projectDto));
+        return "redirect:/projects";
+    }
+
 }

@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/projects")
 @Profile("rest")
 @RequiredArgsConstructor
-public class ProjectController {
+public class ProjectRestController {
 
     private final ProjectService projectService;
 
