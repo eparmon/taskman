@@ -7,7 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
-@SpringBootTest
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
+
+@SpringBootTest(webEnvironment = NONE)
 public class ProjectServiceIntegrationTest {
 
     @Autowired
