@@ -10,6 +10,7 @@
   <label for="name" th:text="#{project.field.name}"></label>
   <input type="text" id="name" th:field="*{name}"/>
   <input type="submit" value="Save Project"/>
+  <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
 </form>
 </body>
 </html>

@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/projects")
@@ -25,7 +27,7 @@ public class ProjectRestController {
     }
 
     @PostMapping
-    public void create(@RequestBody ProjectDto projectDto) {
+    public void create(@Valid @RequestBody ProjectDto projectDto) {
         projectService.save(ProjectConverter.convertToEntity(projectDto));
     }
 }
