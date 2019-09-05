@@ -1,6 +1,7 @@
-package by.eparmon.taskman.persistence.repository;
+package by.eparmon.taskman.config;
 
 import by.eparmon.taskman.persistence.model.Project;
+import by.eparmon.taskman.persistence.repository.ProjectRepository;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
