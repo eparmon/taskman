@@ -8,5 +8,7 @@ public interface ProjectService {
 
     Optional<Project> findById(Long id);
 
+    Iterable<Project> findAll();
+
     Project save(Project project);
 }

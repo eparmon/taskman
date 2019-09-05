@@ -20,6 +20,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public Iterable<Project> findAll() {
+        return projectRepository.findAll();
+    }
+
+    @Override
     public Project save(Project project) {
         return projectRepository.save(project);
     }
