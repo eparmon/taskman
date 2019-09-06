@@ -1,9 +1,12 @@
 package by.eparmon.taskman.web.controller;
 
+import by.eparmon.taskman.event.ProjectCreatedEvent;
+import by.eparmon.taskman.persistence.model.Project;
 import by.eparmon.taskman.service.ProjectService;
 import by.eparmon.taskman.web.converter.ProjectConverter;
 import by.eparmon.taskman.web.dto.ProjectDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,7 @@ import java.util.List;
 public class ProjectMvcController {
 
     private final ProjectService projectService;
+    private final ApplicationEventPublisher eventPublisher;
 
     @GetMapping
     public String getProjects(Model model) {
@@ -47,9 +51,10 @@ public class ProjectMvcController {
 
     @PostMapping
     public String addProject(@Valid @ModelAttribute("project") ProjectDto projectDto, BindingResult bindingResult) {
-        projectService.save(ProjectConverter.convertToEntity(projectDto));
+        Project project = projectService.save(ProjectConverter.convertToEntity(projectDto));
         if (bindingResult.hasErrors())
             return "new-project";
+        eventPublisher.publishEvent(new ProjectCreatedEvent(project.getId()));
         return "redirect:/projects";
     }
 
